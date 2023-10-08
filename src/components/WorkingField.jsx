@@ -12,18 +12,6 @@ export const WorkingField = memo(() => {
   const usingTools = useSelector((state) => state.main.usingTools);
   const dispatch = useDispatch();
 
-  const handleDrop = useCallback(
-    (item) => {
-      if (isOver && !isOverCurrent) {
-        return;
-      }
-      const newTools = update(usingTools, {
-        $push: [item],
-      });
-      dispatch(setUsingTools(newTools));
-    },
-    [usingTools]
-  );
   const moveCard = useCallback((hoverIndex, item) => {
     if (!isOver && isOverCurrent) {
       return;
@@ -51,6 +39,25 @@ export const WorkingField = memo(() => {
       dispatch(setUsingTools(newTools));
     }
   });
+
+  const handleDrop = useCallback(
+    (item) => {
+      const droped = usingTools.some((elem) => elem?.id === item?.id);
+      if(droped) {
+        return;
+      }
+      if (isOver && !isOverCurrent) {
+        return;
+      }
+
+      const newTools = update(usingTools, {
+        $push: [item],
+      });
+      dispatch(setUsingTools(newTools));
+    },
+    [usingTools, moveCard]
+  );
+ 
 
   const [{ isOver, isOverCurrent, canDrop }, drop] = useDrop({
     accept: ItemTypes.CARD,

@@ -3,6 +3,7 @@
   top: 0;
   left: 0;
   width: 100%;
+  z-index: 100;
 }
 .header__body {
   display: flex;
@@ -46,6 +47,7 @@
   overflow: auto;
   scrollbar-width: none;
   transition: all 0.3s ease;
+  padding-top: var(--header-height);
 }
 .working-field::-webkit-scrollbar,
 .result-field::-webkit-scrollbar,
@@ -112,7 +114,7 @@
   grid-gap: 15px;
   width: 45%;
   flex: 0 0 45%;
-  padding: 30px;
+  padding: 30px 30px 150px;
   background-color: var(--blue-100);
 }
 .working-field.can-drop {
