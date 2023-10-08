@@ -1,0 +1,33 @@
+@media (max-width: 991.98px) {
+  .toolbar {
+    width: 50px;
+    flex: 0 0 50px;
+    padding: 10px 5px;
+  }
+  .toolbar .tools {
+    grid-template-columns: 1fr;
+  }
+  .toolbar .tools .tool {
+    padding: 5px;
+  }
+  .toolbar .tools .title {
+    display: none;
+  }
+  .working-field {
+    width: 100%;
+    flex: 0 0 100%
+  }
+  .result-field {
+    position: fixed;
+    top: var(--header-height);
+    width: 100%;
+    right: -100%;
+    flex: 0 0 100%
+  }
+  body.show-result .result-field {
+    right: 0;
+  }
+  .header .btn.--mobile {
+    display: flex;
+  }
+}
